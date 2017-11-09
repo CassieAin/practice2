@@ -57,7 +57,7 @@ public class BooksController {
     }
 
     public void sortBooksByPublisher(){
-       Arrays.sort(books, new BookPublisherComparator());
+        Arrays.sort(books, new BookPublisherComparator());
     }
 
 }

@@ -19,6 +19,14 @@ public class DisplayArrays {
             new Book("Flowers for Algernon", "Daniel Keyes", "Mariner Books", new Date(2005, 5, 1), 311, 2.99),
     };
 
+    public Book[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(Book[] books) {
+        this.books = books;
+    }
+
     public DisplayArrays(){
         controller = new BooksController(books);
     }
@@ -30,14 +38,23 @@ public class DisplayArrays {
     }
 
     public void sortArray(){
-        System.out.println("Sorted array: ");
+        System.out.println("\nSorted array: ");
         controller.sortBooksByPublisher();
         printArray(books);
     }
 
-    public void displayArray(){
-        System.out.println("Printed array: ");
-        printArray(books);
+    public void displayBooksByDate(Date date){
+        System.out.println("\nBooks that are later than " + date + ": ");
+        printArray(controller.getBooksByDate(date));
     }
 
+    public void displayBooksByAuthor(String author){
+        System.out.println("\nBooks that were written by " + author + ": ");
+        printArray(controller.getBooksByAuthor(author));
+    }
+
+    public void displayBooksByPublisher(String publisher){
+        System.out.println("\nBooks that were published by " + publisher + ": ");
+        printArray(controller.getBooksByPublisher(publisher));
+    }
 }
