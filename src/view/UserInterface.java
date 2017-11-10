@@ -8,7 +8,6 @@ public class UserInterface {
     public static void run(){
         int count = 21;
         DisplayArrays display = new DisplayArrays();
-
         System.out.println("Hello, user! In this system you can make several actions");
 
         while(count > 0){
@@ -24,19 +23,16 @@ public class UserInterface {
 
             switch(number){
                 case 1:
-                    System.out.println("Input the author name:");
-                    String author = scanner.nextLine();
-                    display.displayBooksByAuthor(author);
+                    System.out.print("Input the author name:" + scanner.nextLine());
+                    display.displayBooksByAuthor(scanner.nextLine());
                     break;
                 case 2:
-                    System.out.println("Input the publisher name:");
-                    String publisher = scanner.nextLine();
-                    display.displayBooksByPublisher(publisher);
+                    System.out.println("Input the publisher name:" + scanner.nextLine());
+                    display.displayBooksByPublisher(scanner.nextLine());
                     break;
                 case 3:
-                    System.out.println("Input the year:");
-                    int year = scanner.nextInt();
-                    display.displayBooksByDate(new Date(year,1,1));
+                    System.out.println("Input the year:" + scanner.nextInt());
+                    display.displayBooksByDate(new Date(scanner.nextInt(),1,1));
                     break;
                 case 4:
                     display.sortArray();
