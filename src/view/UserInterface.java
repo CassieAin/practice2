@@ -7,7 +7,7 @@ public class UserInterface {
 
     public static void run(){
         int count = 21;
-        DisplayArrays display = new DisplayArrays();
+        ControllerWrapper display = new ControllerWrapper();
         System.out.println("Hello, user! In this system you can make several actions");
 
         while(count > 0){
@@ -19,7 +19,8 @@ public class UserInterface {
             System.out.println("Press 5 - to get the list of books by default");
             System.out.println("Press 6 - to exit");
             System.out.println("Choose the action, please:");
-            int number = scanner.nextInt();
+
+           int number = scanner.nextInt();
 
             switch(number){
                 case 1:
@@ -27,12 +28,14 @@ public class UserInterface {
                     display.displayBooksByAuthor(scanner.nextLine());
                     break;
                 case 2:
-                    System.out.println("Input the publisher name:" + scanner.nextLine());
+                    System.out.print("Input the publisher name:" + scanner.nextLine());
                     display.displayBooksByPublisher(scanner.nextLine());
                     break;
                 case 3:
-                    System.out.println("Input the year:" + scanner.nextInt());
-                    display.displayBooksByDate(new Date(scanner.nextInt(),1,1));
+                    int year = scanner.nextInt();
+                    System.out.print("Input the year:" + year);
+                    scanner.nextLine();
+                    display.displayBooksByDate(new Date(year,1,1));
                     break;
                 case 4:
                     display.sortArray();
@@ -46,6 +49,7 @@ public class UserInterface {
                     System.exit(1);
             }
             count--;
+
         }
     }
 }

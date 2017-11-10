@@ -3,9 +3,10 @@ package view;
 import controller.BooksController;
 import model.Book;
 
+import java.util.Arrays;
 import java.util.Date;
 
-public class DisplayArrays {
+public class ControllerWrapper {
     private BooksController controller;
 
     private Book[] books  = {
@@ -18,7 +19,6 @@ public class DisplayArrays {
             new Book("1984", "George Orwell", "New American Library", new Date(1950, 7, 1), 328, 7.50),
             new Book("Flowers for Algernon", "Daniel Keyes", "Mariner Books", new Date(2005, 5, 1), 311, 2.99),
     };
-
     public Book[] getBooks() {
         return books;
     }
@@ -27,7 +27,7 @@ public class DisplayArrays {
         this.books = books;
     }
 
-    public DisplayArrays(){
+    public ControllerWrapper(){
         controller = new BooksController(books);
     }
 
@@ -44,8 +44,12 @@ public class DisplayArrays {
     }
 
     public void displayBooksByDate(Date date){
-        System.out.println("\nBooks that are later than " + date + ": ");
-        printArray(controller.getBooksByDate(date));
+        if(!Arrays.asList().contains(date)) {
+            System.out.println("\nBooks that are later than " + date + ": ");
+            printArray(controller.getBooksByDate(date));
+        }else{
+            System.out.println("\nThere are no books published after " + date);
+        }
     }
 
     public void displayBooksByAuthor(String author){
@@ -54,7 +58,13 @@ public class DisplayArrays {
     }
 
     public void displayBooksByPublisher(String publisher){
-        System.out.println("\nBooks that were published by " + publisher + ": ");
-        printArray(controller.getBooksByPublisher(publisher));
+        if(!Arrays.asList().contains(publisher)){
+            System.out.println("\nThere are no books published by " + publisher);
+
+        }else{
+            System.out.println("\nBooks that were published by " + publisher + ": ");
+            printArray(controller.getBooksByPublisher(publisher));
+        }
+
     }
 }
