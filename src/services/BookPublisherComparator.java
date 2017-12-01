@@ -1,4 +1,6 @@
-package model;
+package services;
+
+import model.Book;
 
 import java.util.Comparator;
 

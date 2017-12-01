@@ -1,17 +1,23 @@
 package view;
 
+import model.Book;
+import services.ControllerWrapper;
+import services.FilesProcessing;
+
 import java.util.Date;
 import java.util.Scanner;
 
 public class UserInterface {
 
     public static void run(){
-        int count = 21;
-        ControllerWrapper display = new ControllerWrapper();
         System.out.println("Hello, user! In this system you can make several actions");
+        System.out.println("Input the filename to get all the books:");
+        Scanner scanner = new Scanner(System.in);
+        String filename = scanner.nextLine();
+        Book[] data = FilesProcessing.readBooksFromFile(filename);
+        ControllerWrapper display = new ControllerWrapper(data);
 
-        while(count > 0){
-            Scanner scanner = new Scanner(System.in);
+        while(true){
             System.out.println("\nPress 1 - to get the list of books by specific author");
             System.out.println("Press 2 - to get the list of books by specific publisher");
             System.out.println("Press 3 - to get the list of books published after specific year");
@@ -48,8 +54,6 @@ public class UserInterface {
                     System.out.println("Goodbye!");
                     System.exit(1);
             }
-            count--;
-
         }
     }
 }

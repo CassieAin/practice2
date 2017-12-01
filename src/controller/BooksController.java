@@ -1,7 +1,7 @@
 package controller;
 
 import model.Book;
-import model.BookPublisherComparator;
+import services.BookPublisherComparator;
 
 import java.util.Arrays;
 import java.util.Date;
